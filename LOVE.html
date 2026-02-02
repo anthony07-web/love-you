@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para TATIS ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#7f1d1d,#be123c);
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* ⬇️ BAJAMOS EL TÍTULO */
+h1{
+    margin-top:70px;
+}
+
+h2{
+    font-weight:normal;
+    color:#fecdd3;
+    margin-top:5px;
+}
+
+/* 📖 LIBRO */
+.book{
+    perspective:1200px;
+    width:380px;
+    margin:60px auto;
+    position:relative;
+    z-index:2;
+}
+
+.page{
+    background:#111827;
+    padding:45px 30px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(0,0,0,.6);
+    animation: flip 1s ease;
+}
+
+@keyframes flip{
+    from{transform:rotateY(-90deg);}
+    to{transform:rotateY(0deg);}
+}
+
+.reason{
+    font-size:1.3em;
+    min-height:110px;
+    opacity:0;
+    animation: fade 1.5s forwards;
+}
+
+@keyframes fade{
+    to{opacity:1;}
+}
+
+footer{
+    margin-top:40px;
+    font-size:1.3em;
+    color:#ffe4e6;
+    position:relative;
+    z-index:2;
+}
+
+/* 💕 MENSAJE FINAL */
+.final-love{
+    margin-top:25px;
+    font-size:1.6em;
+    color:#fff;
+    animation: aparecer 2s ease forwards, latido 1.5s infinite;
+    opacity:0;
+}
+
+@keyframes aparecer{
+    to{opacity:1;}
+}
+
+@keyframes latido{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* 💖 MARCO DE CORAZONES */
+.frame{
+    position:fixed;
+    inset:-20px;
+    pointer-events:none;
+    z-index:1;
+}
+
+.heart{
+    position:absolute;
+    font-size:22px;
+    animation: beat 1.6s infinite;
+    opacity:.8;
+}
+
+@keyframes beat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.25);}
+    100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Para TATIS 💕</h1>
+<h2>18 razones para amarte</h2>
+
+<div class="book">
+    <div class="page">
+        <div class="reason" id="text"></div>
+    </div>
+</div>
+
+<footer>
+    Para ti 💖
+    <div class="final-love">
+        tiiii amuuuu amoor 💕<br>feliz 14 de febrero
+    </div>
+</footer>
+
+<!-- 💖 MARCO -->
+<div class="frame" id="frame"></div>
+
+<script>
+/* 💕 RAZONES */
+const razones = [
+"Porque tu sonrisa calma mi alma",
+"Porque tu mirada me da paz",
+"Porque contigo todo es más bonito",
+"Porque haces mis días más suaves",
+"Porque tu voz me tranquiliza",
+"Porque abrazarte se siente como hogar",
+"Porque contigo soy yo",
+"Porque tu risa es mi sonido favorito",
+"Porque cuidas mi corazón",
+"Porque confías en mí",
+"Porque tu ternura es real",
+"Porque me haces sentir especial",
+"Porque tus detalles significan todo",
+"Porque me haces sonreír sin querer",
+"Porque a tu lado no tengo miedo",
+"Porque tu amor se siente sincero",
+"Porque eres luz en mis días",
+"Porque simplemente eres tú"
+];
+
+let i = 0;
+const text = document.getElementById("text");
+
+function mostrarRazon(){
+    if(i < razones.length){
+        text.style.opacity = 0;
+        setTimeout(()=>{
+            text.textContent = (i+1) + ". " + razones[i];
+            text.style.animation = "none";
+            text.offsetHeight;
+            text.style.animation = "fade 1.5s forwards";
+            i++;
+        },400);
+    }
+}
+setInterval(mostrarRazon, 2500);
+
+/* 💖 CORAZONES SOLO EN MARCO */
+const frame = document.getElementById("frame");
+
+for(let x=10; x<=90; x+=10){
+    crearCorazon(x+"%", "4%");
+    crearCorazon(x+"%", "96%");
+}
+
+for(let y=18; y<=82; y+=12){
+    crearCorazon("4%", y+"%");
+    crearCorazon("96%", y+"%");
+}
+
+function crearCorazon(left, top){
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = left;
+    h.style.top = top;
+    h.style.animationDelay = Math.random()*2 + "s";
+    frame.appendChild(h);
+}
+</script>
+
+</body>
+</html>

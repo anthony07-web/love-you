@@ -2,41 +2,50 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para TATIS ❤️</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
     background: linear-gradient(135deg,#7f1d1d,#be123c);
     color:white;
     text-align:center;
-    overflow:hidden;
+    overflow-x:hidden;
+    padding:10px;
 }
 
-/* ⬇️ BAJAMOS EL TÍTULO */
+/* TÍTULOS */
 h1{
-    margin-top:70px;
+    margin-top:40px;
+    font-size:clamp(1.8rem,5vw,2.6rem);
 }
 
 h2{
     font-weight:normal;
     color:#fecdd3;
     margin-top:5px;
+    font-size:clamp(1rem,3.5vw,1.3rem);
 }
 
 /* 📖 LIBRO */
 .book{
     perspective:1200px;
-    width:380px;
-    margin:60px auto;
+    width:100%;
+    max-width:380px;
+    margin:35px auto;
     position:relative;
     z-index:2;
 }
 
 .page{
     background:#111827;
-    padding:45px 30px;
+    padding:30px 22px;
     border-radius:20px;
     box-shadow:0 0 30px rgba(0,0,0,.6);
     animation: flip 1s ease;
@@ -48,8 +57,8 @@ h2{
 }
 
 .reason{
-    font-size:1.3em;
-    min-height:110px;
+    font-size:clamp(1.1rem,4vw,1.3rem);
+    min-height:90px;
     opacity:0;
     animation: fade 1.5s forwards;
 }
@@ -58,18 +67,19 @@ h2{
     to{opacity:1;}
 }
 
+/* FOOTER */
 footer{
-    margin-top:40px;
-    font-size:1.3em;
+    margin-top:25px;
+    font-size:clamp(1.1rem,4vw,1.3rem);
     color:#ffe4e6;
     position:relative;
     z-index:2;
 }
 
-/* 💕 MENSAJE FINAL */
+/* MENSAJE FINAL */
 .final-love{
-    margin-top:25px;
-    font-size:1.6em;
+    margin-top:20px;
+    font-size:clamp(1.3rem,5vw,1.6rem);
     color:#fff;
     animation: aparecer 2s ease forwards, latido 1.5s infinite;
     opacity:0;
@@ -88,14 +98,14 @@ footer{
 /* 💖 MARCO DE CORAZONES */
 .frame{
     position:fixed;
-    inset:-20px;
+    inset:-15px;
     pointer-events:none;
     z-index:1;
 }
 
 .heart{
     position:absolute;
-    font-size:22px;
+    font-size:18px;
     animation: beat 1.6s infinite;
     opacity:.8;
 }
@@ -104,6 +114,16 @@ footer{
     0%{transform:scale(1);}
     50%{transform:scale(1.25);}
     100%{transform:scale(1);}
+}
+
+/* AJUSTES EXTRA PARA CELULAR */
+@media (max-width:480px){
+    .page{
+        padding:25px 18px;
+    }
+    .heart{
+        font-size:16px;
+    }
 }
 </style>
 </head>
@@ -122,11 +142,12 @@ footer{
 <footer>
     Para ti 💖
     <div class="final-love">
-        TIIIIII AMUUU AMOOOR 💕<br>FELIZ 14 DE FEBRERO CORAZON
+        TIIIIII AMUUU AMOOOR 💕<br>
+        FELIZ 14 DE FEBRERO CORAZÓN
     </div>
 </footer>
 
-<!-- 💖 MARCO -->
+<!-- MARCO -->
 <div class="frame" id="frame"></div>
 
 <script>
@@ -169,17 +190,17 @@ function mostrarRazon(){
 }
 setInterval(mostrarRazon, 2500);
 
-/* 💖 CORAZONES SOLO EN MARCO */
+/* 💖 CORAZONES EN MARCO */
 const frame = document.getElementById("frame");
 
 for(let x=10; x<=90; x+=10){
-    crearCorazon(x+"%", "4%");
-    crearCorazon(x+"%", "96%");
+    crearCorazon(x+"%", "3%");
+    crearCorazon(x+"%", "97%");
 }
 
-for(let y=18; y<=82; y+=12){
-    crearCorazon("4%", y+"%");
-    crearCorazon("96%", y+"%");
+for(let y=15; y<=85; y+=12){
+    crearCorazon("3%", y+"%");
+    crearCorazon("97%", y+"%");
 }
 
 function crearCorazon(left, top){
@@ -195,5 +216,3 @@ function crearCorazon(left, top){
 
 </body>
 </html>
-
-
